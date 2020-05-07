@@ -2,7 +2,7 @@ package MainApp;
 import javax.swing.*;
 
 import AbstractTypes.GymUser;
-
+import AbstractTypes.Administrator;
 import java.awt.event.*;
 public class Login extends JFrame implements ActionListener{
 	//private JPanel panel;
@@ -81,8 +81,11 @@ public class Login extends JFrame implements ActionListener{
 		
 		if(usernameField.equals ("admin") && passwordField .equals("admin") && radioButton1.isSelected())
 		{
+			Administrator admin = new Administrator("admin");
 			System.out.println("admin");
 			JOptionPane.showMessageDialog(this,"Logged in as admin");
+			new AdminPage(admin);
+			dispose();
 			
 		}
 		
@@ -93,7 +96,7 @@ public class Login extends JFrame implements ActionListener{
 			new GymUserPage(user);
 			dispose();
 		}
-		if(usernameField.equals( "trainer") && passwordField.equals("1234")  && radioButton2.isSelected())
+		if(usernameField.equals("trainer") && passwordField.equals("1234")  && radioButton2.isSelected())
 		{
 			JOptionPane.showMessageDialog(this,"Logged in as trainer");
 		}
