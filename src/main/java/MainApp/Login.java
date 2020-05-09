@@ -2,8 +2,22 @@ package MainApp;
 import javax.swing.*;
 
 import AbstractTypes.GymUser;
+
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.*;
+
+
+
+
 import AbstractTypes.Administrator;
 import java.awt.event.*;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.Iterator;
 public class Login extends JFrame implements ActionListener{
 	//private JPanel panel;
 	private JPasswordField password;
@@ -78,8 +92,59 @@ public class Login extends JFrame implements ActionListener{
 		String passwordField = password.getText();
 		String usernameField = username.getText();
 		//JButton clicked = (JButton)e.getSource();
+		ArrayList<String> userNameList = new ArrayList<String>();
+		ArrayList<String> passwordList = new ArrayList<String>();
+		ArrayList<String> roleList = new ArrayList<String>();
+		JSONParser parser = new JSONParser();
+		try (Reader reader = new FileReader("src/main/java/Resources/users.json")) {
+		JSONArray jsonArray = (JSONArray) parser.parse(reader);
+		System.out.println(jsonArray);
+		Iterator<JSONObject> it = jsonArray.iterator();
+		while (it.hasNext()) {
+		JSONObject obj = it.next();
+		String userName = obj.get("userName").toString();
+		String password = obj.get("password").toString();
+		String role = obj.get("role").toString();
+		/*userNameList.add(obj.get("userName").toString());
+		passwordList.add(obj.get("password").toString());*/
 		
-		if(usernameField.equals ("admin") && passwordField .equals("admin") && radioButton1.isSelected())
+		if(userName.equals(usernameField) && password.equals(passwordField)  && radioButton1.isSelected() && role.equals("admin"))
+		{
+			Administrator admin = new Administrator("admin");
+			System.out.println("admin");
+			JOptionPane.showMessageDialog(this,"Logged in as admin");
+			new AdminPage(admin);
+			dispose();
+		}
+		if(userName.equals(usernameField) && password.equals(passwordField)  && radioButton2.isSelected() && role.equals("trainer"))
+		{
+			
+			JOptionPane.showMessageDialog(this,"Logged in as trainer");
+			
+		}
+		if(userName.equals(usernameField) && password.equals(passwordField)  && radioButton3.isSelected() && role.equals("gymUser"))
+		{
+			
+			/*GymUser user=new GymUser(usernameField);
+			System.out.println(obj.get("membershipType").toString());
+			JOptionPane.showMessageDialog(this,"Logged in as user");
+			new GymUserPage(user);
+			dispose();*/
+		}
+		
+		//roleList.add(obj.get("role").toString());
+		
+		}
+		} catch (IOException h) {
+		h.printStackTrace();
+		} catch (ParseException h) {
+		h.printStackTrace();
+		}
+		for(int i=0;i<userNameList.size();i++)
+		{
+			System.out.println("Username : " + userNameList.get(i) + "\n" + "Password :" + passwordList.get(i));
+		}
+		/*if(usernameField.equals ("admin") && passwordField .equals("admin") && radioButton1.isSelected())
 		{
 			Administrator admin = new Administrator("admin");
 			System.out.println("admin");
@@ -89,17 +154,17 @@ public class Login extends JFrame implements ActionListener{
 			
 		}
 		
-		if(usernameField.equals("user") && passwordField .equals("1234") && radioButton3.isSelected())
+		if(userNameList.contains(usernameField) && passwordList.contains(passwordField) && roleList.contains("trainer") && radioButton3.isSelected())
 		{
-			GymUser user=new GymUser("abc");
+			GymUser user=new GymUser(usernameField);
 			JOptionPane.showMessageDialog(this,"Logged in as user");
 			new GymUserPage(user);
 			dispose();
 		}
-		if(usernameField.equals("trainer") && passwordField.equals("1234")  && radioButton2.isSelected())
+		if( userNameList.contains(usernameField) && passwordList.contains(passwordField) && roleList.contains("gymUser") && radioButton2.isSelected())
 		{
 			JOptionPane.showMessageDialog(this,"Logged in as trainer");
-		}
+		}*/
 		
 		
 	}

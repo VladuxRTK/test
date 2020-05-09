@@ -1,6 +1,8 @@
 package MainApp;
 import javax.swing.*;
 public class ManageMembershipsPage extends JFrame{
+	
+	
 	public ManageMembershipsPage(String name)
 	{
 	    super(name);

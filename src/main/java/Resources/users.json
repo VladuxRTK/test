@@ -1,0 +1,24 @@
+[
+  {
+    "userName": "daniel",
+    "password": "spaniel",
+    "role": "gymUser",
+    "membershipType":"1 month"
+
+  },
+  {
+    "userName": "andi",
+    "password": "florea",
+    "role": "trainer"
+
+  },
+  {
+    "userName": "admin",
+    "password": "1234",
+    "role": "admin"
+
+  }
+  
+
+
+]

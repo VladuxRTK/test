@@ -40,11 +40,11 @@ public class AdminPage extends JFrame implements ActionListener{
 		
 	}
 	
-	public static void main(String[] args)
+	/*public static void main(String[] args)
 	{
 		Administrator admin = new Administrator("Ionut Grigorut Atimut");
 		new AdminPage(admin);
-	}
+	}*/
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
