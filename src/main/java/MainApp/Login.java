@@ -36,6 +36,7 @@ public class Login extends JFrame implements ActionListener{
     public Login()
     {
     	super("Login Page");
+    	getContentPane().setBackground(new Color(65, 105, 225));
     	this.setSize(600,400);
     	username = new JTextField();
     	password = new JPasswordField();
@@ -47,8 +48,11 @@ public class Login extends JFrame implements ActionListener{
     	createAccountButton = new JButton("Create account");//action listener to be added
     	
     	radioButton1 = new JRadioButton("admin");
+    	radioButton1.setBackground(new Color(65, 105, 225));
     	radioButton2 = new JRadioButton("trainer");
+    	radioButton2.setBackground(new Color(65, 105, 225));
     	radioButton3 = new JRadioButton("gym user");
+    	radioButton3.setBackground(new Color(65, 105, 225));
     	
     		
     	usernameLabel.setBounds(175,100,150,25);
@@ -80,17 +84,17 @@ public class Login extends JFrame implements ActionListener{
     	radioButton2.addActionListener(this);
     	radioButton3.addActionListener(this);*/
     	
-    	this.add(username);
-    	this.add(password);
-    	this.add(passwordLabel);
-    	this.add(loginButton);
-    	this.add(usernameLabel);
-    	this.add(radioButton1);
-    	this.add(radioButton2);
-    	this.add(radioButton3);
-    	this.add(createAccountButton);
+    	getContentPane().add(username);
+    	getContentPane().add(password);
+    	getContentPane().add(passwordLabel);
+    	getContentPane().add(loginButton);
+    	getContentPane().add(usernameLabel);
+    	getContentPane().add(radioButton1);
+    	getContentPane().add(radioButton2);
+    	getContentPane().add(radioButton3);
+    	getContentPane().add(createAccountButton);
     	
-    	this.setLayout(null);
+    	getContentPane().setLayout(null);
     	this.setVisible(true);
     	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     
