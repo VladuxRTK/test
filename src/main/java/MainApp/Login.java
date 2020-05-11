@@ -2,7 +2,7 @@ package MainApp;
 import javax.swing.*;
 
 import AbstractTypes.GymUser;
-
+import AbstractTypes.Trainer;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -133,7 +133,7 @@ public class Login extends JFrame implements ActionListener{
 		}
 		else if(userName.equals(usernameField) && password.equals(passwordField)  && radioButton2.isSelected() && role.equals("trainer"))
 		{
-			
+			Trainer trainer = new Trainer(usernameField);
 			JOptionPane.showMessageDialog(this,"Logged in as trainer");
 			isLogged=true;
 			new TrainerPage();
