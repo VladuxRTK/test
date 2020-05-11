@@ -132,6 +132,8 @@ public class Login extends JFrame implements ActionListener{
 			
 			JOptionPane.showMessageDialog(this,"Logged in as trainer");
 			isLogged=true;
+			new TrainerPage();
+			dispose();
 		}
 		else if(userName.equals(usernameField) && password.equals(passwordField)  && radioButton3.isSelected() && role.equals("gymUser"))
 		{
